@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dramaku</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #222;
+        padding-top: 60px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+      }
+      .sidebar a {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        padding: 10px;
+        color: #fff;
+        background-color: #333;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+      }
+      .sidebar a:hover {
+        background-color: #444;
+      }
+      .overlay {
+        position: fixed;
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 900;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+      }
+      header {
+        background-color: #1f1f1f;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5em;
+        color: #ffcc00;
+        font-weight: bold;
+      }
+      .nav-kanan {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .nav-kanan input[type="text"] {
+        padding: 5px 10px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+      }
+      .nav-kanan a,
+      .nav-kanan select {
+        color: #fff;
+        background-color: #333;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 14px;
+        text-decoration: none;
+      }
+      .hamburger {
+        font-size: 24px;
+        cursor: pointer;
+        margin-right: 15px;
+        color: #ffcc00;
+      }
+      .header-container {
+        display: flex;
+        align-items: center;
+      }
+      #modeToggle {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #ffcc00;
+      }
+      body.light {
+        background-color: #f4f4f4;
+        color: #000;
+      }
+      body.light header {
+        background-color: #fff;
+      }
+      body.light .sidebar {
+        background-color: #eee;
+      }
+      body.light .sidebar a {
+        color: #000;
+        background-color: #ddd;
+      }
+      body.light .drama-card {
+        background-color: #fff;
+        color: #000;
+      }
+      body.light .nav-kanan a,
+      body.light .nav-kanan select {
+        color: #000;
+        background-color: #ddd;
+      }
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .nav-kanan {
+          flex-direction: column;
+          align-items: stretch;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .nav-kanan input[type="text"] {
+          width: 100%;
+        }
+        .drama-container {
+          padding: 20px;
+        }
+        .drama-card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="hamburger">&#9776;</div>
+        <div class="logo">Dramaku</div>
+      </div>
+      <div class="nav-kanan">
+        <input type="text" id="searchInput" placeholder="Cari drama..." />
+        <a href="#" id="inboxLink">Inbox</a>
+        <select id="categoryFilter">
+          <option value="">Semua Kategori</option>
+          <option value="thriller">Thriller</option>
+          <option value="action">Action</option>
+          <option value="school">School</option>
+          <option value="mystery">Mystery</option>
+        </select>
+        <button id="modeToggle" title="Ganti Mode">🌙</button>
+      </div>
+    </header>
+
+    <div id="sidebar" class="sidebar">
+      <a href="login.html" id="loginLink">Masuk</a>
+      <a href="daftar.html" id="daftarLink">Daftar</a>
+      <a href="#" onclick="changeLanguage('id')">🇮🇩 Bahasa Indonesia</a>
+      <a href="#" onclick="changeLanguage('en')">🇺🇸 English</a>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Katalog Drama -->
+    <main class="drama-container">
+      <div class="drama-card" data-title="Big Mouth" data-category="thriller">
+        <a href="detail.html?id=bigmouth">
+          <img src="img/bigmouth.jpg" alt="Big Mouth" />
+          <h3>Big Mouth</h3>
+        </a>
+      </div>
+      <div
+        class="drama-card"
+        data-title="ONE: High School Heroes"
+        data-category="school,action"
+      >
+        <a href="detail.html?id=one-highschool-heroes">
+          <img
+            src="img/one-highschool-heroes.jpg"
+            alt="ONE: High School Heroes"
+          />
+          <h3>ONE: High School Heroes</h3>
+        </a>
+      </div>
+      <div
+        class="drama-card"
+        data-title="Partner For Justice"
+        data-category="mystery"
+      >
+        <a href="detail.html?id=partner-for-justice">
+          <img src="img/partner-for-justice.jpg" alt="Partner For Justice" />
+          <h3>Partner For Justice</h3>
+        </a>
+      </div>
+      <div
+        class="drama-card"
+        data-title="Partner For Justice 2"
+        data-category="mystery"
+      >
+        <a href="detail.html?id=partner-for-justice-2">
+          <img
+            src="img/partner-for-justice-2.jpg"
+            alt="Partner For Justice 2"
+          />
+          <h3>Partner For Justice 2</h3>
+        </a>
+      </div>
+      <div
+        class="drama-card"
+        data-title="The First Responders"
+        data-category="action,thriller"
+      >
+        <a href="detail.html?id=the-first-responders">
+          <img src="img/the-first-responders.jpg" alt="The First Responders" />
+          <h3>The First Responders</h3>
+        </a>
+      </div>
+      <div
+        class="drama-card"
+        data-title="Weak Hero Class 2"
+        data-category="school,action"
+      >
+        <a href="detail.html?id=weak-hero-class-2">
+          <img src="img/weak-hero-class-2.jpg" alt="Weak Hero Class 2" />
+          <h3>Weak Hero Class 2</h3>
+        </a>
+      </div>
+    </main>
+
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      hamburger.addEventListener("click", () => {
+        sidebar.style.left = "0";
+        overlay.style.display = "block";
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebar.style.left = "-250px";
+        overlay.style.display = "none";
+      });
+
+      const searchInput = document.getElementById("searchInput");
+      const cards = document.querySelectorAll(".drama-card");
+
+      searchInput.addEventListener("keyup", filterCards);
+      const categoryFilter = document.getElementById("categoryFilter");
+      categoryFilter.addEventListener("change", filterCards);
+
+      function filterCards() {
+        const keyword = searchInput.value.toLowerCase();
+        const category = categoryFilter.value;
+        cards.forEach((card) => {
+          const title = card.getAttribute("data-title").toLowerCase();
+          const cardCategories = (
+            card.getAttribute("data-category") || ""
+          ).split(",");
+          const matchesSearch = title.includes(keyword);
+          const matchesCategory =
+            !category || cardCategories.includes(category);
+          card.style.display =
+            matchesSearch && matchesCategory ? "block" : "none";
+        });
+      }
+
+      const modeToggle = document.getElementById("modeToggle");
+      const currentMode = localStorage.getItem("mode");
+
+      if (currentMode === "light") {
+        document.body.classList.add("light");
+        modeToggle.textContent = "🌞";
+      }
+
+      modeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light");
+        const isLight = document.body.classList.contains("light");
+        modeToggle.textContent = isLight ? "🌞" : "🌙";
+        localStorage.setItem("mode", isLight ? "light" : "dark");
+      });
+
+      // Bahasa
+      const translations = {
+        id: {
+          inbox: "Inbox",
+          kategori: "Kategori",
+          cari: "Cari drama...",
+          masuk: "Masuk",
+          daftar: "Daftar",
+        },
+        en: {
+          inbox: "Inbox",
+          kategori: "Category",
+          cari: "Search drama...",
+          masuk: "Login",
+          daftar: "Register",
+        },
+      };
+
+      function applyLanguage(lang) {
+        const t = translations[lang];
+        searchInput.placeholder = t.cari;
+        document.getElementById("inboxLink").textContent = t.inbox;
+        document.getElementById("categoryFilter").options[0].text = t.kategori;
+        document.getElementById("loginLink").textContent = t.masuk;
+        document.getElementById("daftarLink").textContent = t.daftar;
+      }
+
+      function changeLanguage(lang) {
+        localStorage.setItem("lang", lang);
+        applyLanguage(lang);
+        sidebar.style.left = "-250px";
+        overlay.style.display = "none";
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("lang") || "id";
+        applyLanguage(savedLang);
+      });
+    </script>
+  </body>
+</html>

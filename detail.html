@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Drama</title>
+    <style>
+      body {
+        background-color: #121212;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+      }
+      img {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      h1 {
+        margin-top: 20px;
+        color: #ffcc00;
+      }
+      p {
+        line-height: 1.6;
+        margin-top: 10px;
+      }
+      .info {
+        margin-top: 20px;
+        font-size: 0.95em;
+        color: #aaa;
+      }
+      a.back {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 8px 14px;
+        background-color: #ffcc00;
+        color: #000;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img id="poster" src="" alt="" />
+      <h1 id="title">Memuat...</h1>
+      <p id="synopsis">...</p>
+      <div class="info" id="info"></div>
+      <a href="index.html" class="back">← Kembali ke Beranda</a>
+    </div>
+
+    <script>
+      // Data drama
+      const dramas = {
+        bigmouth: {
+          title: "Big Mouth",
+          poster: "img/bigmouth.jpg",
+          synopsis:
+            "Seorang pengacara kelas tiga yang secara tidak sengaja terlibat dalam kasus pembunuhan besar.",
+          cast: "Lee Jong Suk, Im Yoon Ah",
+          genre: "Thriller, Misteri, Hukum",
+          year: "2022",
+        },
+        "one-highschool-heroes": {
+          title: "ONE: High School Heroes",
+          poster: "img/one-highschool-heroes.jpg",
+          synopsis:
+            "Sekelompok siswa dengan kekuatan khusus melindungi sekolah mereka dari kejahatan.",
+          cast: "Da-i, Kim Dong Hyun",
+          genre: "Action, Sekolah",
+          year: "2021",
+        },
+        "partner-for-justice": {
+          title: "Partner For Justice",
+          poster: "img/partner-for-justice.jpg",
+          synopsis:
+            "Seorang ahli forensik dan jaksa wanita bekerjasama mengungkap misteri pembunuhan.",
+          cast: "Jung Jae Young, Jeong Yu Mi",
+          genre: "Kriminal, Misteri",
+          year: "2018",
+        },
+        "partner-for-justice-2": {
+          title: "Partner For Justice 2",
+          poster: "img/partner-for-justice-2.jpg",
+          synopsis:
+            "Lanjutan dari musim pertama, dengan kasus baru yang lebih rumit dan gelap.",
+          cast: "Jung Jae Young, Jeong Yu Mi",
+          genre: "Kriminal, Misteri",
+          year: "2019",
+        },
+        "the-first-responders": {
+          title: "The First Responders",
+          poster: "img/the-first-responders.jpg",
+          synopsis:
+            "Polisi, pemadam kebakaran, dan paramedis bekerja sama menangani situasi darurat.",
+          cast: "Kim Rae Won, Son Ho Jun",
+          genre: "Aksi, Drama",
+          year: "2022",
+        },
+        "weak-hero-class-2": {
+          title: "Weak Hero Class 2",
+          poster: "img/weak-hero-class-2.jpg",
+          synopsis:
+            "Seorang siswa jenius dan pendiam melawan kekerasan di sekolah dengan kecerdasan taktis.",
+          cast: "Park Ji Hoon, Choi Hyun Wook",
+          genre: "Sekolah, Aksi, Drama",
+          year: "2024",
+        },
+      };
+
+      // Ambil ID dari URL
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      if (id && dramas[id]) {
+        const drama = dramas[id];
+        document.getElementById("poster").src = drama.poster;
+        document.getElementById("poster").alt = drama.title;
+        document.getElementById("title").textContent = drama.title;
+        document.getElementById("synopsis").textContent = drama.synopsis;
+        document.getElementById("info").innerHTML = `
+        <p><strong>Pemeran:</strong> ${drama.cast}</p>
+        <p><strong>Genre:</strong> ${drama.genre}</p>
+        <p><strong>Tahun:</strong> ${drama.year}</p>
+      `;
+      } else {
+        document.querySelector(".container").innerHTML =
+          "<h1>Drama tidak ditemukan.</h1><a href='index.html' class='back'>← Kembali ke Beranda</a>";
+      }
+    </script>
+  </body>
+</html>
