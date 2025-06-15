@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="style.css" />
 
     <style>
+      .welcome-message {
+        text-align: center;
+        padding: 20px;
+        background-color: #1f1f1f;
+        color: #ffcc00;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+      .welcome-message h2 {
+        margin-bottom: 10px;
+        font-size: 1.8em;
+      }
+      .welcome-message p {
+        font-size: 1em;
+        color: #ccc;
+      }
       .sidebar {
         position: fixed;
         top: 0;
@@ -146,6 +162,16 @@
           width: 100%;
         }
       }
+
+      .share-buttons a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .share-buttons a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
@@ -167,6 +193,20 @@
         <button id="modeToggle" title="Ganti Mode">🌙</button>
       </div>
     </header>
+
+    <div class="share-buttons" style="text-align: center; margin-top: 20px">
+      </div>
+
+<!-- ✨ Tambahan kata sambutan -->
+<section class="welcome-message">
+  <h2>Selamat Datang di Dramaku!</h2>
+  <p>Nikmati koleksi drama pilihan terbaik dengan berbagai genre seru. Temukan favoritmu dan bagikan ke teman-teman!</p>
+</section>
+
+      <p>Bagikan halaman ini ke:</p>
+      <a id="home-share-wa" href="#" target="_blank">WhatsApp</a> |
+      <a id="home-share-copy" href="#" target="_blank">Salin Link</a>
+    </div>
 
     <div id="sidebar" class="sidebar">
       <a href="login.html" id="loginLink">Masuk</a>
@@ -334,6 +374,34 @@
         const savedLang = localStorage.getItem("lang") || "id";
         applyLanguage(savedLang);
       });
+
+      // Share dari halaman utama
+      const homeUrl = window.location.href;
+      document.getElementById("home-share-wa").href =
+        "https://wa.me/?text=" +
+        encodeURIComponent("Lihat website Dramaku: " + homeUrl);
+
+      document
+        .getElementById("home-share-copy")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          navigator.clipboard.writeText(homeUrl).then(() => {
+            alert("Link berhasil disalin!");
+          });
+        });
     </script>
+    <script>
+  // Tambahkan animasi ke elemen yang ingin muncul dari bawah
+  window.addEventListener("DOMContentLoaded", () => {
+    const animatedElements = document.querySelectorAll(
+      ".welcome-message, .drama-card"
+    );
+    animatedElements.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add("animate-up");
+      }, i * 150); // Delay per elemen agar muncul bergantian
+    });
+  });
+</script>
   </body>
 </html>
