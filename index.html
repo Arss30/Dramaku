@@ -1,251 +1,257 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dramaku</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-    }
-    header {
-      background-color: #1f1f1f;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-size: 1.5em;
-      color: #ffcc00;
-      font-weight: bold;
-    }
-    .hamburger {
-      font-size: 24px;
-      cursor: pointer;
-      margin-right: 15px;
-      color: #ffcc00;
-    }
-    .header-container {
-      display: flex;
-      align-items: center;
-    }
-    .nav-kanan {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .nav-kanan input[type="text"] {
-      padding: 5px 10px;
-      border-radius: 20px;
-      border: none;
-      outline: none;
-    }
-    .nav-kanan a,
-    .nav-kanan select {
-      color: #fff;
-      background-color: #333;
-      border: none;
-      border-radius: 5px;
-      padding: 5px 10px;
-      font-size: 14px;
-      text-decoration: none;
-    }
-    #modeToggle {
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: #ffcc00;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #222;
-      padding-top: 60px;
-      transition: left 0.3s ease;
-      z-index: 1000;
-    }
-    .sidebar a {
-      display: block;
-      width: 90%;
-      margin: 10px auto;
-      padding: 10px;
-      color: #fff;
-      background-color: #333;
-      border-radius: 5px;
-      text-decoration: none;
-      text-align: center;
-    }
-    .sidebar a:hover {
-      background-color: #444;
-    }
-    .overlay {
-      position: fixed;
-      display: none;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 900;
-    }
-
-    .welcome-message {
-      text-align: center;
-      padding: 20px;
-      background-color: #1f1f1f;
-      color: #ffcc00;
-      margin-top: 10px;
-      border-radius: 10px;
-    }
-    .welcome-message h2 {
-      margin-bottom: 10px;
-      font-size: 1.8em;
-    }
-    .welcome-message p {
-      font-size: 1em;
-      color: #ccc;
-    }
-
-    .drama-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .drama-card {
-      width: 200px;
-      background-color: #1f1f1f;
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-    .drama-card img {
-      width: 100%;
-      display: block;
-    }
-    .drama-card h3 {
-      padding: 10px;
-      font-size: 1em;
-    }
-    .drama-card.animate-up {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .share-buttons {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #1f1f1f;
-      padding: 10px;
-      text-align: center;
-      z-index: 100;
-      font-size: 1.5em;
-    }
-    .share-buttons a {
-      color: #ffcc00;
-      text-decoration: none;
-      margin-right: 10px;
-    }
-
-    body.light {
-      background-color: #f4f4f4;
-      color: #000;
-    }
-    body.light header {
-      background-color: #fff;
-    }
-    body.light .sidebar {
-      background-color: #eee;
-    }
-    body.light .sidebar a {
-      color: #000;
-      background-color: #ddd;
-    }
-    body.light .drama-card {
-      background-color: #fff;
-      color: #000;
-    }
-    body.light .nav-kanan a,
-    body.light .nav-kanan select {
-      color: #000;
-      background-color: #ddd;
-    }
-
-    @media (max-width: 768px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dramaku</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+      }
       header {
-        flex-direction: column;
-        align-items: flex-start;
+        background-color: #1f1f1f;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5em;
+        color: #ffcc00;
+        font-weight: bold;
+      }
+      .hamburger {
+        font-size: 24px;
+        cursor: pointer;
+        margin-right: 15px;
+        color: #ffcc00;
+      }
+      .header-container {
+        display: flex;
+        align-items: center;
       }
       .nav-kanan {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
       }
       .nav-kanan input[type="text"] {
+        padding: 5px 10px;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+      }
+      .nav-kanan a,
+      .nav-kanan select {
+        color: #fff;
+        background-color: #333;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 14px;
+        text-decoration: none;
+      }
+      #modeToggle {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #ffcc00;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #222;
+        padding-top: 60px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+      }
+      .sidebar a {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        padding: 10px;
+        color: #fff;
+        background-color: #333;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+      }
+      .sidebar a:hover {
+        background-color: #444;
+      }
+      .overlay {
+        position: fixed;
+        display: none;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 900;
+      }
+
+      .welcome-message {
+        text-align: center;
+        padding: 20px;
+        background-color: #1f1f1f;
+        color: #ffcc00;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+      .welcome-message h2 {
+        margin-bottom: 10px;
+        font-size: 1.8em;
+      }
+      .welcome-message p {
+        font-size: 1em;
+        color: #ccc;
+      }
+
+      .drama-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
       }
       .drama-card {
-        width: 100%;
+        width: 200px;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        overflow: hidden;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
       }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-container">
-      <div class="hamburger">&#9776;</div>
-      <div class="logo">Dramaku</div>
+      .drama-card img {
+        width: 100%;
+        display: block;
+      }
+      .drama-card h3 {
+        padding: 10px;
+        font-size: 1em;
+      }
+      .drama-card.animate-up {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .share-buttons {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #1f1f1f;
+        padding: 10px;
+        text-align: center;
+        z-index: 100;
+        font-size: 1.5em;
+      }
+      .share-buttons a {
+        color: #ffcc00;
+        text-decoration: none;
+        margin-right: 10px;
+      }
+
+      body.light {
+        background-color: #f4f4f4;
+        color: #000;
+      }
+      body.light header {
+        background-color: #fff;
+      }
+      body.light .sidebar {
+        background-color: #eee;
+      }
+      body.light .sidebar a {
+        color: #000;
+        background-color: #ddd;
+      }
+      body.light .drama-card {
+        background-color: #fff;
+        color: #000;
+      }
+      body.light .nav-kanan a,
+      body.light .nav-kanan select {
+        color: #000;
+        background-color: #ddd;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .nav-kanan {
+          flex-direction: column;
+          align-items: stretch;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .nav-kanan input[type="text"] {
+          width: 100%;
+        }
+        .drama-card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="hamburger">&#9776;</div>
+        <div class="logo">Dramaku</div>
+      </div>
+      <div class="nav-kanan">
+        <input type="text" id="searchInput" placeholder="Cari drama..." />
+        <a href="whatsapp.html" id="inboxLink">Inbox</a>
+        <select id="categoryFilter">
+          <option value="">Semua Kategori</option>
+          <option value="thriller">Thriller</option>
+          <option value="action">Action</option>
+          <option value="school">School</option>
+          <option value="mystery">Mystery</option>
+        </select>
+        <button id="modeToggle" title="Ganti Mode">🌙</button>
+      </div>
+    </header>
+
+    <section class="welcome-message">
+      <h2>Selamat Datang di Dramaku!</h2>
+      <p>
+        Nikmati koleksi drama pilihan terbaik dengan berbagai genre seru.
+        Temukan favoritmu dan bagikan ke teman-teman!
+      </p>
+    </section>
+
+    <div id="sidebar" class="sidebar">
+      <a href="login.html" id="loginLink">Masuk</a>
+      <a href="daftar.html" id="daftarLink">Daftar</a>
+      <a href="#" onclick="changeLanguage('id')">🇮🇩 Bahasa Indonesia</a>
+      <a href="#" onclick="changeLanguage('en')">🇺🇸 English</a>
     </div>
-    <div class="nav-kanan">
-      <input type="text" id="searchInput" placeholder="Cari drama..." />
-      <a href="whatsapp.html" id="inboxLink">Inbox</a>
-      <select id="categoryFilter">
-        <option value="">Semua Kategori</option>
-        <option value="thriller">Thriller</option>
-        <option value="action">Action</option>
-        <option value="school">School</option>
-        <option value="mystery">Mystery</option>
-      </select>
-      <button id="modeToggle" title="Ganti Mode">🌙</button>
-    </div>
-  </header>
+    <div id="overlay" class="overlay"></div>
 
-  <section class="welcome-message">
-    <h2>Selamat Datang di Dramaku!</h2>
-    <p>Nikmati koleksi drama pilihan terbaik dengan berbagai genre seru. Temukan favoritmu dan bagikan ke teman-teman!</p>
-  </section>
-
-  <div id="sidebar" class="sidebar">
-    <a href="login.html" id="loginLink">Masuk</a>
-    <a href="daftar.html" id="daftarLink">Daftar</a>
-    <a href="#" onclick="changeLanguage('id')">🇮🇩 Bahasa Indonesia</a>
-    <a href="#" onclick="changeLanguage('en')">🇺🇸 English</a>
-  </div>
-  <div id="overlay" class="overlay"></div>
-
-     <!-- Katalog Drama -->
+    <!-- Katalog Drama -->
     <main class="drama-container">
       <div class="drama-card" data-title="Big Mouth" data-category="thriller">
         <a href="detail.html?id=bigmouth">
@@ -311,119 +317,132 @@
       </div>
     </main>
 
-  <div class="share-buttons">
-    <a id="home-share-wa" href="#" target="_blank" title="Bagikan ke WhatsApp">
-      <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-    </a>
-    <a id="home-share-copy" href="#" title="Salin Link">
-      <i class="fas fa-link" style="color: #ffcc00;"></i>
-    </a>
-  </div>
+    <div class="share-buttons">
+      <a
+        id="home-share-wa"
+        href="#"
+        target="_blank"
+        title="Bagikan ke WhatsApp"
+      >
+        <i class="fab fa-whatsapp" style="color: #25d366"></i>
+      </a>
+      <a id="home-share-copy" href="#" title="Salin Link">
+        <i class="fas fa-link" style="color: #ffcc00"></i>
+      </a>
+    </div>
 
-  <script>
-    const hamburger = document.querySelector(".hamburger");
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
 
-    hamburger.addEventListener("click", () => {
-      sidebar.style.left = "0";
-      overlay.style.display = "block";
-    });
-    overlay.addEventListener("click", () => {
-      sidebar.style.left = "-250px";
-      overlay.style.display = "none";
-    });
-
-    const searchInput = document.getElementById("searchInput");
-    const categoryFilter = document.getElementById("categoryFilter");
-    const cards = document.querySelectorAll(".drama-card");
-
-    function filterCards() {
-      const keyword = searchInput.value.toLowerCase();
-      const category = categoryFilter.value;
-      cards.forEach((card) => {
-        const title = card.getAttribute("data-title").toLowerCase();
-        const cardCategories = (card.getAttribute("data-category") || "").split(",").map(c => c.trim());
-        const matchesSearch = title.includes(keyword);
-        const matchesCategory = !category || cardCategories.includes(category);
-        card.style.display = matchesSearch && matchesCategory ? "block" : "none";
+      hamburger.addEventListener("click", () => {
+        sidebar.style.left = "0";
+        overlay.style.display = "block";
       });
-    }
-
-    searchInput.addEventListener("keyup", filterCards);
-    categoryFilter.addEventListener("change", filterCards);
-
-    const modeToggle = document.getElementById("modeToggle");
-    if (localStorage.getItem("mode") === "light") {
-      document.body.classList.add("light");
-      modeToggle.textContent = "🌞";
-    }
-    modeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("light");
-      const isLight = document.body.classList.contains("light");
-      modeToggle.textContent = isLight ? "🌞" : "🌙";
-      localStorage.setItem("mode", isLight ? "light" : "dark");
-    });
-
-    const translations = {
-      id: {
-        inbox: "Inbox",
-        kategori: "Kategori",
-        cari: "Cari drama...",
-        masuk: "Masuk",
-        daftar: "Daftar",
-      },
-      en: {
-        inbox: "Inbox",
-        kategori: "Category",
-        cari: "Search drama...",
-        masuk: "Login",
-        daftar: "Register",
-      },
-    };
-
-    function applyLanguage(lang) {
-      const t = translations[lang];
-      document.getElementById("inboxLink").textContent = t.inbox;
-      document.getElementById("categoryFilter").options[0].text = t.kategori;
-      document.getElementById("searchInput").placeholder = t.cari;
-      document.getElementById("loginLink").textContent = t.masuk;
-      document.getElementById("daftarLink").textContent = t.daftar;
-    }
-
-    function changeLanguage(lang) {
-      localStorage.setItem("lang", lang);
-      applyLanguage(lang);
-      sidebar.style.left = "-250px";
-      overlay.style.display = "none";
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem("lang") || "id";
-      applyLanguage(savedLang);
-
-      // Animasi naik
-      document.querySelectorAll(".welcome-message, .drama-card").forEach((el, i) => {
-        setTimeout(() => el.classList.add("animate-up"), i * 150);
+      overlay.addEventListener("click", () => {
+        sidebar.style.left = "-250px";
+        overlay.style.display = "none";
       });
 
-      // Share
-      const homeUrl = window.location.href;
-      const shareWa = document.getElementById("home-share-wa");
-      const shareCopy = document.getElementById("home-share-copy");
+      const searchInput = document.getElementById("searchInput");
+      const categoryFilter = document.getElementById("categoryFilter");
+      const cards = document.querySelectorAll(".drama-card");
 
-      if (shareWa) {
-        shareWa.href = "https://wa.me/?text=" + encodeURIComponent("Lihat website Dramaku: " + homeUrl);
-      }
-      if (shareCopy) {
-        shareCopy.addEventListener("click", (e) => {
-          e.preventDefault();
-          navigator.clipboard.writeText(homeUrl).then(() => {
-            alert("Link berhasil disalin!");
-          });
+      function filterCards() {
+        const keyword = searchInput.value.toLowerCase();
+        const category = categoryFilter.value;
+        cards.forEach((card) => {
+          const title = card.getAttribute("data-title").toLowerCase();
+          const cardCategories = (card.getAttribute("data-category") || "")
+            .split(",")
+            .map((c) => c.trim());
+          const matchesSearch = title.includes(keyword);
+          const matchesCategory =
+            !category || cardCategories.includes(category);
+          card.style.display =
+            matchesSearch && matchesCategory ? "block" : "none";
         });
       }
-    });
-  </script>
-</body>
+
+      searchInput.addEventListener("keyup", filterCards);
+      categoryFilter.addEventListener("change", filterCards);
+
+      const modeToggle = document.getElementById("modeToggle");
+      if (localStorage.getItem("mode") === "light") {
+        document.body.classList.add("light");
+        modeToggle.textContent = "🌞";
+      }
+      modeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light");
+        const isLight = document.body.classList.contains("light");
+        modeToggle.textContent = isLight ? "🌞" : "🌙";
+        localStorage.setItem("mode", isLight ? "light" : "dark");
+      });
+
+      const translations = {
+        id: {
+          inbox: "Inbox",
+          kategori: "Kategori",
+          cari: "Cari drama...",
+          masuk: "Masuk",
+          daftar: "Daftar",
+        },
+        en: {
+          inbox: "Inbox",
+          kategori: "Category",
+          cari: "Search drama...",
+          masuk: "Login",
+          daftar: "Register",
+        },
+      };
+
+      function applyLanguage(lang) {
+        const t = translations[lang];
+        document.getElementById("inboxLink").textContent = t.inbox;
+        document.getElementById("categoryFilter").options[0].text = t.kategori;
+        document.getElementById("searchInput").placeholder = t.cari;
+        document.getElementById("loginLink").textContent = t.masuk;
+        document.getElementById("daftarLink").textContent = t.daftar;
+      }
+
+      function changeLanguage(lang) {
+        localStorage.setItem("lang", lang);
+        applyLanguage(lang);
+        sidebar.style.left = "-250px";
+        overlay.style.display = "none";
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("lang") || "id";
+        applyLanguage(savedLang);
+
+        // Animasi naik
+        document
+          .querySelectorAll(".welcome-message, .drama-card")
+          .forEach((el, i) => {
+            setTimeout(() => el.classList.add("animate-up"), i * 150);
+          });
+
+        // Share
+        const homeUrl = window.location.href;
+        const shareWa = document.getElementById("home-share-wa");
+        const shareCopy = document.getElementById("home-share-copy");
+
+        if (shareWa) {
+          shareWa.href =
+            "https://wa.me/?text=" +
+            encodeURIComponent("Lihat website Dramaku: " + homeUrl);
+        }
+        if (shareCopy) {
+          shareCopy.addEventListener("click", (e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(homeUrl).then(() => {
+              alert("Link berhasil disalin!");
+            });
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
