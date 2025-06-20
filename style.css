@@ -37,3 +37,19 @@
 .animate-up {
     animation: slideUp 0.8s ease-out;
 }
+@media (max-width: 768px) {
+    .drama-card {
+    width: 100%;
+    max-width: 320px;
+    }
+}
+/* Responsive fix */
+@media (max-width: 768px) {
+    .drama-container {
+    padding: 20px;
+    }
+    .drama-card {
+    width: 100%;
+    max-width: 320px;
+    }
+}
