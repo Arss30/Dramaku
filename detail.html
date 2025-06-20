@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detail Drama</title>
     <style>
-@media (max-width: 768px) {
-    .container {
-    margin: 20px;
-    padding: 15px;
+    @media (max-width: 768px) {
+        .container {
+        margin: 20px;
+        padding: 15px;
+        }
+        h1 {
+        font-size: 1.4em;
+        }
+        p,
+        .info {
+        font-size: 0.9em;
+        }
     }
-    h1 {
-    font-size: 1.4em;
-    }
-    p, .info {
-    font-size: 0.9em;
-    }
-}
+
     body {
         background-color: #121212;
         color: #fff;
@@ -59,18 +61,17 @@
         text-decoration: none;
         border-radius: 5px;
     }
-    
-.share-buttons a {
-    color: #ffcc00;
-    text-decoration: none;
-    font-weight: bold;
-    margin-right: 10px;
-}
-.share-buttons a:hover {
-    text-decoration: underline;
-}
 
-</style>
+    .share-buttons a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    .share-buttons a:hover {
+        text-decoration: underline;
+    }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -78,14 +79,14 @@
     <h1 id="title">Memuat...</h1>
     <p id="synopsis">...</p>
     <div class="info" id="info"></div>
-    
-<div class="share-buttons" style="margin-top: 20px;">
-    <p>Bagikan ke:</p>
-    <a id="share-wa" href="#" target="_blank">WhatsApp</a> |
-    <a id="share-copy" href="#" target="_blank">Salin Link</a>
-</div>
 
-<a href="index.html" class="back">← Kembali ke Beranda</a>
+    <div class="share-buttons" style="margin-top: 20px">
+        <p>Bagikan ke:</p>
+        <a id="share-wa" href="#" target="_blank">WhatsApp</a> |
+        <a id="share-copy" href="#" target="_blank">Salin Link</a>
+    </div>
+
+    <a href="index.html" class="back">← Kembali ke Beranda</a>
     </div>
 
     <script>
@@ -166,20 +167,22 @@
         document.querySelector(".container").innerHTML =
         "<h1>Drama tidak ditemukan.</h1><a href='index.html' class='back'>← Kembali ke Beranda</a>";
     }
-    
-// Tambahan fitur share
-const currentUrl = window.location.href;
 
-document.getElementById("share-wa").href =
-    "https://wa.me/?text=" + encodeURIComponent("Lihat drama ini di Dramaku: " + currentUrl);
+      // Tambahan fitur share
+    const currentUrl = window.location.href;
 
-document.getElementById("share-copy").addEventListener("click", function (e) {
-    e.preventDefault();
-    navigator.clipboard.writeText(currentUrl).then(() => {
-    alert("Link berhasil disalin!");
-    });
-});
+    document.getElementById("share-wa").href =
+        "https://wa.me/?text=" +
+        encodeURIComponent("Lihat drama ini di Dramaku: " + currentUrl);
 
-</script>
+    document
+        .getElementById("share-copy")
+        .addEventListener("click", function (e) {
+        e.preventDefault();
+        navigator.clipboard.writeText(currentUrl).then(() => {
+            alert("Link berhasil disalin!");
+        });
+        });
+    </script>
 </body>
 </html>
