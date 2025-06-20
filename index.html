@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dramaku</title>
     <link rel="stylesheet" href="style.css" />
-
+    <style>
+@media (max-width: 768px) {
+  .share-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 10px;
+    text-align: center;
+    z-index: 100;
+  }
+  .share-buttons p {
+    margin-bottom: 5px;
+  }
+}
+</style>
     <style>
       .welcome-message {
         text-align: center;
@@ -193,8 +209,6 @@
         <button id="modeToggle" title="Ganti Mode">🌙</button>
       </div>
     </header>
-
-    <div class="share-buttons" style="text-align: center; margin-top: 20px">
       </div>
 
 <!-- ✨ Tambahan kata sambutan -->
@@ -202,12 +216,6 @@
   <h2>Selamat Datang di Dramaku!</h2>
   <p>Nikmati koleksi drama pilihan terbaik dengan berbagai genre seru. Temukan favoritmu dan bagikan ke teman-teman!</p>
 </section>
-
-      <p>Bagikan halaman ini ke:</p>
-      <a id="home-share-wa" href="#" target="_blank">WhatsApp</a> |
-      <a id="home-share-copy" href="#" target="_blank">Salin Link</a>
-    </div>
-
     <div id="sidebar" class="sidebar">
       <a href="login.html" id="loginLink">Masuk</a>
       <a href="daftar.html" id="daftarLink">Daftar</a>
@@ -403,5 +411,12 @@
     });
   });
 </script>
+
+<div class="share-buttons" style="text-align: center; margin-top: 20px">
+  <p>Bagikan halaman ini ke:</p>
+  <a id="home-share-wa" href="#" target="_blank">WhatsApp</a> |
+  <a id="home-share-copy" href="#" target="_blank">Salin Link</a>
+</div>
+
   </body>
 </html>
