@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat WhatsApp</title>
@@ -9,90 +9,92 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-      }
-      body {
+    }
+    body {
         font-family: "Segoe UI", sans-serif;
         background-color: #e5ddd5;
         display: flex;
         flex-direction: column;
         height: 100vh;
-      }
-      .header {
+    }
+    .header {
         background-color: #075e54;
         color: #fff;
         padding: 15px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-      }
-      .chat-body {
+    }
+    .chat-body {
+        max-width: 600px;
+        margin: 0 auto;
         flex: 1;
         padding: 10px;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
         gap: 10px;
-      }
-      .chat {
+    }
+    .chat {
         max-width: 70%;
         padding: 10px;
         border-radius: 10px;
         font-size: 0.95em;
         line-height: 1.4;
-      }
-      .from-them {
+    }
+    .from-them {
         background-color: #fff;
         align-self: flex-start;
-      }
-      .from-me {
+    }
+    .from-me {
         background-color: #dcf8c6;
         align-self: flex-end;
-      }
-      .input-area {
+    }
+    .input-area {
         display: flex;
         padding: 10px;
         background-color: #f0f0f0;
         gap: 10px;
-      }
-      .input-area input {
+    }
+    .input-area input {
         flex: 1;
         padding: 10px;
         border-radius: 20px;
         border: 1px solid #ccc;
         outline: none;
-      }
-      .input-area button {
+    }
+    .input-area button {
         background-color: #075e54;
         color: white;
         border: none;
         padding: 10px 15px;
         border-radius: 50%;
         cursor: pointer;
-      }
+    }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="header">
-      <div>
+    <div>
         <strong>Teman Chat</strong><br />
         <small>online</small>
-      </div>
-      <div>📞 📷</div>
+    </div>
+    <div>📞 📷</div>
     </div>
 
     <div class="chat-body">
-      <div class="chat from-them">
+    <div class="chat from-them">
         Hai! Kamu nonton drama apa akhir-akhir ini?
-      </div>
-      <div class="chat from-me">Aku baru selesai Big Mouth, keren banget!</div>
-      <div class="chat from-them">
+    </div>
+    <div class="chat from-me">Aku baru selesai Big Mouth, keren banget!</div>
+    <div class="chat from-them">
         Wah, aku juga suka! Ending-nya gimana ya menurutmu?
-      </div>
+    </div>
     </div>
 
     <div class="input-area">
-      <input type="text" placeholder="Ketik pesan..." />
-      <button>➤</button>
+    <input type="text" placeholder="Ketik pesan..." />
+    <button>➤</button>
     </div>
-  </body>
+</body>
 </html>
